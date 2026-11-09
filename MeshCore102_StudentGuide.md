@@ -43,7 +43,7 @@ A Room Server and repeater solve different problems. MeshCore recommends separat
 - Harbor Breeze solar light with included **1500 mAh 18650 battery**
 - Seeed Studio **XIAO nRF52840** and **Wio-SX1262** LoRa radio
 - **ACEIRMC CN3065** mini solar LiPo charger
-- 100 mm female-socket **JST PH 2.0** silicone-wire cables
+- Three 100 mm female-socket **JST PH 2.0** silicone-wire cables
 
 ### Antenna system
 
@@ -58,7 +58,7 @@ A Room Server and repeater solve different problems. MeshCore recommends separat
 ### Enclosure and mounting
 
 - 3D-printed **TPU gasket** and **PETG component mount**
-- 3D-printed [**antenna connector clamp**](https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp)
+- 3D-printed PETG [**antenna connector clamp**](https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp)
 - Zip ties **or** hose clamps for attaching the mount to a pole
 - Original enclosure screws and original mount screw and nut
 
@@ -84,7 +84,7 @@ The class uses the included 1500 mAh 18650. A larger-capacity compatible 18650 m
 - Favor useful height, open surroundings, and a clear path toward the area served.
 - Keep the vertical antenna clear of nearby metal where practical.
 - Give the solar panel several hours of direct sun, including during winter.
-- In Indiana, a generally southerly exposure is a useful starting point, adjusted for shade.
+- In Indiana, a generally southerly exposure at approximately a 40° angle is a useful starting point, adjusted for shade.
 - Choose a safe, permitted, stable, serviceable location and orient seams to shed water.
 
 Planning tools:
@@ -98,20 +98,162 @@ Planning tools:
 
 ## 1. Flash and Configure Before Disassembly
 
-Leave the supplied Wio antenna attached during computer setup.
+Complete the bootloader update, firmware flash, and repeater configuration before cutting any wires or opening the solar-light enclosure. Leave the small antenna supplied with the Wio attached throughout computer setup. It will be disconnected once after configuration and will not be used in the finished repeater.
 
-1. Flash the current compatible MeshCore **repeater** firmware.
-2. Select the correct legal regional radio preset.
-3. Follow the [OKI Mesh repeater configuration guide](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration) to set the repeater name and class settings.
-4. Confirm normal startup.
-5. Power down, disconnect the supplied antenna once, and set it aside.
+### 1A. Select the Board and Repeater Firmware
 
-Naming standard: `StateCode.CountyCode.descriptiveName`.
+1. Connect the XIAO and Wio assembly to the computer with a USB cable.
+2. Open the MeshCore Flasher [https://flasher.meshcore.io](https://flasher.meshcore.io/).
+3. Type `xiao` in the search box.
 
-- Allen County: `IN.ALL.descriptiveName`
-- Local Fort Wayne convention: `IN.ALL.FWA.descriptiveName`
-- [Repeater naming reference](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming)
-- [County abbreviations](https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations)
+<figure class="keep-together"><img src="images/MeshCoreFlasher1.png" alt="MeshCore Flasher search box with xiao entered"><figcaption>Filter the device list by entering xiao.</figcaption></figure>
+
+4. Select **Seeed Studio Xiao nRF52 WIO**. It will likely be the middle option.
+
+<figure class="keep-together"><img src="images/MeshCoreFlasher2.png" alt="Seeed Studio Xiao nRF52 WIO option in MeshCore Flasher"><figcaption>Select the Seeed Studio Xiao nRF52 WIO target.</figcaption></figure>
+
+5. Select the **Repeater** role.
+
+<figure class="keep-together"><img src="images/MeshCoreFlasher3.png" alt="Repeater role selected in MeshCore Flasher"><figcaption>Select Repeater as the firmware role.</figcaption></figure>
+
+### 1B. Update the OTAFIX Bootloader
+
+The OTAFIX bootloader permits future firmware updates over Bluetooth without reopening the finished enclosure and reconnecting the board to a computer. Install it before flashing the repeater firmware.
+
+1. On the flasher page, select the **OTAFIX bootloader** link to open the GitHub release page.
+
+<figure class="keep-together"><img src="images/MeshCoreFlasher4.png" alt="OTAFIX bootloader link in MeshCore Flasher"><figcaption>Open the OTAFIX bootloader release from the flasher page.</figcaption></figure>
+
+2. Scroll to **Assets** and select **Show all assets**. The displayed number of assets may change between releases.
+
+<figure class="keep-together"><img src="images/UF2ShowAllAssets.png" alt="Show all assets link on the bootloader release page"><figcaption>Expand the complete release-asset list.</figcaption></figure>
+
+3. Download this UF2 file:
+
+   `update-xiao_nrf52840_ble_sense_bootloader-0.9.2-OTAFIX2.3-BP1.4_nosd.uf2`
+
+   **Use the file with `sense` in the middle of its name.**
+
+<figure class="keep-together"><img src="images/uf2File.png" alt="Correct XIAO nRF52840 Sense OTAFIX UF2 bootloader file"><figcaption>Select the XIAO nRF52840 Sense OTAFIX UF2 file.</figcaption></figure>
+
+4. Double-press the XIAO `RST` button within approximately 0.5 seconds to enter UF2 mode. A drive named `XIAO-SENSE` or `XIAO-BOOT` should appear.
+
+<figure class="keep-together"><img src="images/XIAO_RST.jpg" alt="Reset button on the XIAO board"><figcaption>Double-press the reset button to enter UF2 mode.</figcaption></figure>
+
+5. Locate the downloaded UF2 bootloader file in the computer's Downloads folder.
+
+<figure class="keep-together"><img src="images/bootloader.png" alt="Downloaded OTAFIX bootloader UF2 file"><figcaption>Copy the downloaded bootloader UF2 file.</figcaption></figure>
+
+6. Open the `XIAO-SENSE` or `XIAO-BOOT` drive and paste the UF2 file into it.
+
+<figure class="keep-together"><img src="images/XIAO_Sense.png" alt="XIAO-SENSE drive"><figcaption>Paste the bootloader UF2 file onto the XIAO drive.</figcaption></figure>
+
+The drive will disappear when the copy completes, and the XIAO will reboot with the updated bootloader.
+
+### 1C. Flash the Repeater Firmware
+
+1. Return to the [MeshCore Flasher](https://flasher.meshcore.io/) with the XIAO WIO target and Repeater role selected.
+2. Select **DFU mode active**.
+
+<figure class="keep-together"><img src="images/DFUmodeActive.png" alt="DFU mode active button in MeshCore Flasher"><figcaption>Tell the flasher that the board is in DFU mode.</figcaption></figure>
+
+3. Select the correct USB device and choose **Connect**. If the device is not listed or the connection fails, refresh the browser and try again.
+
+<figure class="keep-together"><img src="images/USBDevice.png" alt="USB device selection dialog"><figcaption>Select the USB connection for the XIAO board.</figcaption></figure>
+
+4. Select **Flash!**
+
+<figure class="keep-together"><img src="images/Flash.png" alt="Flash button in MeshCore Flasher"><figcaption>Begin flashing the repeater firmware.</figcaption></figure>
+
+5. If the browser asks again, select the same USB device and choose **Connect**.
+6. Wait for the flashing operation to complete. Do not disconnect the USB cable while the firmware is being written.
+
+<figure class="keep-together"><img src="images/Flashing.png" alt="MeshCore firmware flashing progress"><figcaption>Wait while the repeater firmware is written.</figcaption></figure>
+
+<figure class="keep-together"><img src="images/FlashingCompleted.png" alt="MeshCore firmware flashing completed"><figcaption>Continue only after the flasher reports completion.</figcaption></figure>
+
+### 1D. Configure the Repeater
+
+1. Select **Configure via USB**.
+
+<figure class="keep-together"><img src="images/ConfigureUSB.png" alt="Configure via USB button"><figcaption>Open the USB configuration tool.</figcaption></figure>
+
+2. Select **Connect**.
+
+<figure class="keep-together"><img src="images/ConnectButton.png" alt="Connect button in the configuration tool"><figcaption>Start the USB connection.</figcaption></figure>
+
+3. Select the correct USB device and choose **Connect**.
+
+<figure class="keep-together"><img src="images/USBDevice.png" alt="USB device selection dialog for configuration"><figcaption>Select the XIAO USB device.</figcaption></figure>
+
+4. Confirm that the repeater setup screen opens.
+
+<figure class="keep-together"><img src="images/SetupScreen.png" alt="MeshCore repeater setup screen"><figcaption>Use the setup screen to enter the repeater settings.</figcaption></figure>
+
+5. Follow the [OKI Mesh repeater configuration guide](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration).
+6. Enter the repeater name using the standard format `StateCode.CountyCode.descriptiveName`.
+
+   - Allen County: `IN.ALL.descriptiveName`
+   - Local Fort Wayne convention: `IN.ALL.FWA.descriptiveName`
+   - [Repeater naming reference](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming)
+   - [County abbreviations](https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations)
+
+7. Create a strong administrator password and record it in a secure place.
+8. Set the radio preset to `USA`. Confirm that the resulting values match the NEIMesh settings in the next section. If the interface changes the displayed preset to `Canada`, set it back to `USA` and verify the individual values.
+9. Enter useful **Owner info**, such as the general installation location and a Discord name, mesh identifier, or amateur-radio call sign that people can use to contact you. Include only information you are comfortable sharing.
+
+<figure class="keep-together"><img src="images/OwnerInfo.png" alt="Owner information field in the repeater setup"><figcaption>Add enough owner information to identify and service the repeater.</figcaption></figure>
+
+10. Under **Advanced settings**, set **Path hash mode** to `2-byte (1)`.
+
+<figure class="keep-together"><img src="images/byteHash.png" alt="Path hash mode in advanced repeater settings"><figcaption>Select the 2-byte path-hash mode.</figcaption></figure>
+
+11. Select **Save settings**, then choose **OK** to reboot the device and apply the changes.
+
+<figure class="keep-together"><img src="images/SaveSettings.png" alt="Save settings button in the repeater setup"><figcaption>Save the configuration and allow the device to reboot.</figcaption></figure>
+
+### 1E. Apply the NEIMesh Settings
+
+MeshCore devices must use matching radio settings to communicate. NEIMesh currently recommends the following local baseline. These recommendations may change as the mesh grows.
+
+#### Radio settings
+
+- Preset: `USA`
+- Frequency: `910.525 MHz`
+- Bandwidth: `62.5 kHz`
+- Spreading factor: `7`
+- Coding rate: `5`
+- Path hash size: **2-byte**
+
+#### Repeater command-line settings
+
+Open the repeater command-line interface and enter:
+
+```text
+set agc.reset.interval 500
+set multi.acks 1
+set loop.detect minimal
+```
+
+#### Repeater region settings
+
+Regions are not currently enforced, but the local hierarchy prepares the repeater for future growth. A weather-alert node already scopes messages to the `fwa` region; repeaters that do not define that region will not receive those scoped messages.
+
+```text
+region put us-in
+region put nei us-in
+region put fwa nei
+region allowf *
+```
+
+The hierarchy is `us-in` for Indiana, `nei` for northeast Indiana, and `fwa` for the Fort Wayne area.
+
+### 1F. Finish Computer Setup
+
+1. Confirm the repeater name, radio values, path-hash mode, owner information, command-line settings, and region hierarchy.
+2. Confirm normal startup after the configuration reboot.
+3. Disconnect the board from the computer.
+4. Disconnect the small supplied Wio antenna once and set it aside. It is not used in the finished repeater.
 
 ## 2. Retain the Mount Hardware
 
@@ -228,7 +370,10 @@ Use zip ties or hose clamps to attach the PETG mount to a pole. They are for pol
 
 ## Final Acceptance Checklist
 
-- [ ] Correct repeater firmware, regional preset, and standard-form name saved
+- [ ] OTAFIX bootloader installed and repeater firmware flashed successfully
+- [ ] `USA` radio values and 2-byte path-hash mode saved
+- [ ] Standard-form repeater name, owner information, and administrator password completed
+- [ ] Repeater command-line and `us-in` / `nei` / `fwa` region settings entered
 - [ ] Both PCB trace cuts test open
 - [ ] Corrected JST polarity and solder joints verified
 - [ ] ALFA antenna and U.FL pigtail secure
@@ -241,6 +386,9 @@ Use zip ties or hose clamps to attach the PETG mount to a pole. They are for pol
 
 | Symptom | Check first |
 |---|---|
+| XIAO drive does not appear | Double-press `RST` within approximately 0.5 seconds; try another USB data cable or port |
+| Flasher cannot connect | Confirm the correct USB device, refresh the browser, reconnect the cable, and retry |
+| Settings do not persist | Select **Save settings**, approve the reboot, reconnect, and verify each value |
 | No power | Battery polarity/voltage, JST polarity, switch wiring, solder joints, and CN3065 path |
 | No charging | Solar illumination, panel polarity, CN3065 connections, and trace cuts |
 | Poor LoRa range | Regional preset, ALFA antenna, U.FL seating, height, and obstructions |
@@ -258,6 +406,9 @@ Inspect after severe weather and periodically. Clean the panel; inspect the moun
 | Build date |  |
 | Repeater name |  |
 | Firmware/version |  |
+| OTAFIX bootloader | Installed / Needs follow-up |
+| Radio and region settings | Verified / Needs follow-up |
+| Owner/contact identifier |  |
 | Installation location |  |
 | Battery installed | Included 1500 mAh 18650 / Other: __________ |
 | Final radio test | Pass / Needs follow-up |
