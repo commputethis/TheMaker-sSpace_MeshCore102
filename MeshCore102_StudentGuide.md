@@ -124,9 +124,9 @@ The OTAFIX bootloader permits future firmware updates over Bluetooth without reo
 
 <figure class="keep-together"><img src="images/MeshCoreFlasher4.png" alt="OTAFIX bootloader link in MeshCore Flasher"><figcaption>Open the OTAFIX bootloader release from the flasher page.</figcaption></figure>
 
-2. Scroll to **Assets** and select **Show all assets**. The displayed number of assets may change between releases.
+2. Scroll to **Assets** and select **Show all 53 assets**. The displayed number of assets may change between releases.
 
-<figure class="keep-together"><img src="images/UF2ShowAllAssets.png" alt="Show all assets link on the bootloader release page"><figcaption>Expand the complete release-asset list.</figcaption></figure>
+<figure class="keep-together"><img src="images/UF2ShowAllAssets.png" alt="Show all 53 assets link on the bootloader release page"><figcaption>Expand the complete release-asset list.</figcaption></figure>
 
 3. Download this UF2 file:
 

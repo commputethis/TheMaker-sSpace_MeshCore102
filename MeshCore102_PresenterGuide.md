@@ -93,8 +93,8 @@ The [Harbor Breeze solar mesh-node models](https://www.printables.com/model/1748
 | Time | Presenter focus |
 | ---: | --- |
 | 0:00-0:15 | MeshCore refresher, Room Servers, and project overview |
-| 0:15-0:30 | Firmware, repeater configuration, and naming |
-| 0:30-0:45 | Placement and solar guidance |
+| 0:15-0:30 | Placement and solar guidance |
+| 0:30-0:45 | Firmware, repeater configuration, and naming |
 | 0:45-1:50 | Guided construction and open-unit testing |
 | 1:50-2:00 | Installation, maintenance, and wrap-up |
 
