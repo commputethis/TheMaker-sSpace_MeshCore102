@@ -118,10 +118,28 @@ The following list collects the web resources used in the guides and presentatio
 - Harbor Breeze solar mesh-node mounts and TPU gasket: <https://www.printables.com/model/1748950-26-harbor-breeze-solar-mesh-node-mounts-meshtastic>
 - XIAO nRF52840 and Wio-SX1262 antenna connector clamp: <https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp>
 
+## License
+
+Except where otherwise noted, the original materials in this repository are
+licensed under the [Creative Commons Attribution-NonCommercial 4.0 International
+License](https://creativecommons.org/licenses/by-nc/4.0/).
+
+You may copy, share, modify, and build upon these materials for noncommercial
+purposes. Attribution to the original creator is not required. Please retain a
+reference to this license so others understand that commercial use is not
+permitted.
+
+Commercial use requires separate permission from the copyright holder.
+
+Third-party trademarks, linked resources, screenshots, printable models, and
+other materials identified as belonging to their respective owners are not
+covered by this license.
+
 ## Repository Layout
 
 ```text
 .
+├── LICENSE
 ├── MeshCore102_PresenterGuide.md
 ├── MeshCore102_StudentGuide.md
 ├── MeshCore102_The_Peoples_Repeater_Slides_v7.pptx
