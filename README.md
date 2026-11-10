@@ -6,6 +6,12 @@ This repository contains the class materials for the November 2026 Maker's Space
 
 The finished unit uses an outdoor antenna and does **not** retain the original light. The class covers repeater placement, a demonstration of firmware and configuration, construction, open-unit testing, weatherproofing, mounting, and maintenance. Each class board is flashed, configured, tested, and labeled before class so approximately 70 minutes can be reserved for the hands-on build.
 
+## Class Recording
+
+A recording of this class is available on YouTube:
+
+[Watch MeshCore 102: The People’s Repeater (coming Soon)](YOUTUBE_URL)
+
 ## Project Repository and Build Sources
 
 - Class repository: <https://github.com/commputethis/TheMaker-sSpace_MeshCore102>
