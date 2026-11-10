@@ -71,6 +71,8 @@ li {
 
 a {
   color: var(--accent);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 img {

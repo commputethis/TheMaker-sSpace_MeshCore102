@@ -5,9 +5,17 @@
 **Class length:** 2 hours  
 **Recommended level:** MeshCore 102  
 **Primary activity:** Convert a Harbor Breeze solar light into a solar-powered MeshCore repeater  
-**Hands-on build time:** 65 minutes, including open-unit inspection and testing
+**Hands-on build time:** 70 minutes, including open-unit inspection and testing
 
-This guide keeps the class moving while students use the separate Student Guide and Build Instructions. Complete the firmware and repeater configuration before disassembly so the supplied Wio antenna remains attached during computer setup. The finished repeater uses the ALFA outdoor antenna and does not retain the original light.
+This guide keeps the class moving while students use the separate Student Guide and Build Instructions. Before class, flash, configure, test, and label every board. During class, demonstrate the firmware process without asking participants to repeat it. Keep the soldering and assembly work as the hands-on core of the class. The finished repeater uses the ALFA outdoor antenna and does not retain the original light.
+
+## Project Repository and Build Sources
+
+- [Class repository](https://github.com/commputethis/TheMaker-sSpace_MeshCore102) — <https://github.com/commputethis/TheMaker-sSpace_MeshCore102>
+- [Build reference video 1](https://www.youtube.com/watch?v=yAmINEghCOc) — <https://www.youtube.com/watch?v=yAmINEghCOc>
+- [Build reference video 2](https://www.youtube.com/watch?v=eXMlvGiI7Hs) — <https://www.youtube.com/watch?v=eXMlvGiI7Hs>
+
+This class build combines ideas from both reference videos with the specific parts, printed components, wiring, and procedures documented in these guides.
 
 ## Class Goals
 
@@ -30,12 +38,16 @@ By the end of the class, participants should be able to:
 - Project the repeater configuration, naming, county-code, MeshMapper, and solar-angle pages.
 - Display a photograph of the completed repeater in its intended outdoor orientation.
 
-### Prepare Computers and Firmware
+### Prepare Boards, Demonstration Computer, and Firmware
 
-- Confirm that every computer can flash and configure the XIAO nRF52840 and Wio-SX1262.
-- Stage the current compatible MeshCore repeater firmware and USB cables.
-- Leave the supplied small Wio antenna attached for firmware and configuration work.
-- Keep at least one known-good USB cable and radio available for troubleshooting.
+- Update the OTAFIX bootloader and flash the current compatible MeshCore repeater firmware onto every class board.
+- Configure every board with the class radio, command-line, and region settings.
+- Give each board a temporary standard-form name, such as `IN.ALL.FWA.Class01`, `IN.ALL.FWA.Class02`, and so on.
+- Put a matching removable label on each board or kit. Record its temporary name, firmware version, and configuration status on the instructor's preparation sheet.
+- Do not put the administrator password on an outward-facing label. Record it securely where the student can receive it with the completed repeater.
+- Confirm normal startup on every board before placing it in a kit.
+- Leave the supplied small Wio antenna attached. Students will remove it only when they are ready to connect the external pigtail during the build.
+- Prepare one separate demonstration board, a known-good USB data cable, and a computer that can show the bootloader, firmware, and configuration workflow.
 - Decide which legal regional preset and repeater class settings the class will use.
 - Confirm that the NEIMesh radio, CLI, and region recommendations in this guide are still current before class.
 
@@ -56,36 +68,36 @@ The class JST leads have already been corrected by swapping the red and black po
 - 6 in / 15 cm U.FL1-to-N-female RG178 pigtail
 - Waterproof self-fusing silicone tape
 
-The small antenna supplied attached to the Wio is used during pre-build setup only. It is disconnected once after configuration and is not used in the finished repeater.
+The small antenna supplied attached to the Wio remains connected while the prepared board is handled. It is removed once during the build, immediately before the external pigtail is connected, and is not used in the finished repeater.
 
 #### Enclosure and Mounting
 
 - 3D-printed TPU gasket
 - 3D-printed PETG component mount
-- 3D-printed PETG [antenna connector clamp](https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp)
+- 3D-printed PETG [antenna connector clamp](https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp) — <https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp>
 - Zip ties or hose clamps for attaching the mount to a pole
 
-The [Harbor Breeze solar mesh-node models](https://www.printables.com/model/1748950-26-harbor-breeze-solar-mesh-node-mounts-meshtastic) page contains the component mount, alternate mounts, and TPU gasket.
+The [Harbor Breeze solar mesh-node models](https://www.printables.com/model/1748950-26-harbor-breeze-solar-mesh-node-mounts-meshtastic) page contains the component mount, alternate mounts, and TPU gasket: <https://www.printables.com/model/1748950-26-harbor-breeze-solar-mesh-node-mounts-meshtastic>
 
 ### Prepare Tools and Supplies
 
 - Soldering irons, stands, solder, and tip-cleaning supplies
 - Flush cutters or wire cutters
-- Multimeters
 - Nonconductive tools for battery removal
 - Small screwdrivers and tools for tightening the N-connector hardware
 - Parts trays for retained screws and the separate mount nut
 - Painter's tape
 - Goo Gone, isopropyl alcohol, and cleaning cloths
-- Computers and USB cables
+- Demonstration computer and USB data cable
 - Completed reference repeater
 
 ### Perform Pre-Class Checks
 
-- Confirm that all JST leads have been corrected, but do not treat wire color as proof of polarity.
+- Confirm visually that the corrected JST leads match the labeled connections and illustrated wiring.
 - Check that the printed parts fit the enclosure and pigtail used in class.
 - Confirm that every kit has the correct washers and N-connector nut.
-- Arrange tables so the presenter or helpers can inspect solder joints and measurements.
+- Confirm that every board has been flashed, configured, tested, and matched to its temporary-name label.
+- Arrange tables so the presenter or helpers can inspect solder joints and wiring.
 - Set aside a troubleshooting area for units that need more time.
 
 ## Class Schedule
@@ -94,17 +106,17 @@ The [Harbor Breeze solar mesh-node models](https://www.printables.com/model/1748
 | ---: | --- |
 | 0:00-0:15 | MeshCore refresher, Room Servers, and project overview |
 | 0:15-0:30 | Placement and solar guidance |
-| 0:30-0:45 | Firmware, repeater configuration, and naming |
-| 0:45-1:50 | Guided construction and open-unit testing |
+| 0:30-0:40 | Firmware and repeater configuration demonstration |
+| 0:40-1:50 | Guided construction and open-unit testing |
 | 1:50-2:00 | Installation, maintenance, and wrap-up |
 
-Protect the 65-minute build period. Move optional discussion to the end or to a follow-up session.
+Protect the 70-minute build period. Move optional discussion to the end or to a follow-up session.
 
 ## 0:00-0:15 MeshCore Refresher and Project Overview
 
 ### Suggested Introduction
 
-"Welcome back to The Maker's Space. Today we are building The People's Repeater, a solar-powered MeshCore repeater housed in a repurposed Harbor Breeze solar-light enclosure. We will configure the radio first, discuss placement, and then reserve the rest of the class for construction and testing. The finished unit has an outdoor antenna and no light."
+"Welcome back to The Maker's Space. Today we are building The People's Repeater, a solar-powered MeshCore repeater housed in a repurposed Harbor Breeze solar-light enclosure. Your board has already been flashed, configured, tested, and labeled. We will review that process, discuss placement, and then reserve the rest of the class for construction and testing. The finished unit has an outdoor antenna and no light."
 
 ### MeshCore Roles and Room Servers
 
@@ -112,7 +124,7 @@ Protect the 65-minute build period. Move optional discussion to the end or to a 
 - A **repeater** extends useful coverage by forwarding packets toward their destinations.
 - A **Room Server** is a shared message board. It stores posts and can deliver unseen history when a user returns, unlike an ordinary channel where a message can be missed while the user is out of range.
 
-A Room Server and repeater solve different problems. MeshCore recommends separate devices for the best experience; enabling repeat behavior on a Room Server does not provide the full repeater feature set. This class builds a dedicated repeater. See the [MeshCore FAQ](https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md).
+A Room Server and repeater solve different problems. MeshCore recommends separate devices for the best experience; enabling repeat behavior on a Room Server does not provide the full repeater feature set. This class builds a dedicated repeater. See the [MeshCore FAQ](https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md): <https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md>
 
 Show the completed reference unit. Identify the enclosure, panel, battery, XIAO and Wio boards, CN3065, printed parts, pigtail, ALFA antenna, TPU gasket, switch, weatherproofing, and pole-mounting points.
 
@@ -136,7 +148,7 @@ Ask:
 
 Emphasize intentional placement. A repeater should solve a coverage problem or strengthen an important route through the mesh.
 
-Use [MeshMapper](https://fwa.meshmapper.net/) to demonstrate the purpose and radio-path tools.
+Use [MeshMapper](https://fwa.meshmapper.net/) to demonstrate the purpose and radio-path tools: <https://fwa.meshmapper.net/>
 
 ### 2. Favor clear radio paths
 
@@ -173,7 +185,7 @@ Look for:
 - A panel orientation that receives useful light
 - A location that will not quickly become covered by leaves, vegetation, snow, or debris
 
-In Indiana, a generally southerly exposure at approximately a 40° angle is a useful starting point, adjusted for site-specific shade. Demonstrate the [solar tilt-angle calculator](https://www.baess.app/tools/solar-tilt-angle-calculator).
+In Indiana, a generally southerly exposure at approximately a 40° angle is a useful starting point, adjusted for site-specific shade. Demonstrate the [solar tilt-angle calculator](https://www.baess.app/tools/solar-tilt-angle-calculator): <https://www.baess.app/tools/solar-tilt-angle-calculator>
 
 Remind participants that a sunny location in November may be shaded differently during another season.
 
@@ -226,18 +238,18 @@ Before installing a repeater, confirm:
 - The property owner has approved the installation.
 - The repeater can be retrieved and inspected.
 
-## 0:30-0:45 Firmware Configuration and Naming
+## 0:30-0:40 Firmware and Configuration Demonstration
 
-Complete this section before anyone cuts a wire or opens an enclosure. Leave the supplied Wio antenna attached during setup.
+Class boards are already flashed, configured, tested, and labeled. Use the separate demonstration board to walk through the process. Participants should observe rather than connect or reflash their class boards.
 
-Keep this section focused on firmware, required repeater settings, the name, and normal startup.
+Keep the demonstration focused on the bootloader purpose, repeater firmware, required settings, naming, and the preparation label. Leave the supplied Wio antenna attached to each class board until the external pigtail is ready during the build.
 
 Naming standard: `StateCode.CountyCode.descriptiveName`.
 
 - Allen County: `IN.ALL.descriptiveName`
 - Local Fort Wayne convention: `IN.ALL.FWA.descriptiveName`
-- [Repeater naming](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming)
-- [County abbreviations](https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations)
+- [Repeater naming](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming) — <https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming>
+- [County abbreviations](https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations) — <https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations>
 
 ### Recommended NEIMesh Node Settings
 
@@ -275,9 +287,9 @@ region allowf *
 
 Explain the hierarchy as `us-in` for Indiana, `nei` for northeast Indiana, and `fwa` for the Fort Wayne area.
 
-### Flashing the Firmware
+### Demonstrate Flashing the Firmware
 
-1. Connect the board to the computer.
+1. Connect the demonstration board to the computer.
 2. Flash the current compatible MeshCore **repeater** firmware.
    1. Go to [https://flasher.meshcore.io/](https://flasher.meshcore.io/)
    2. Type `xiao` into the search/filter bar
@@ -287,43 +299,43 @@ Explain the hierarchy as `us-in` for Indiana, `nei` for northeast Indiana, and `
        ![MeshCoreFlasher](images/MeshCoreFlasher2.png)
    4. Select the Repeater role
        ![MeshCoreFlasher](images/MeshCoreFlasher3.png)
-   5. Click on the `OTAFIX bootloader` link to go to github to download a bootloader we need to install.
-      1. This will allow future updates to be done through Bluetooth rather than having to reconnect it to a computer.
-       ![MeshCoreFlasher](images/MeshCoreFlasher4.png)
-   6. Scroll Down to `Assets` and click the `"Show all 53 assets"` link.
+   5. Explain that selecting the OTAFIX link in the flasher downloads a ZIP file, which is not the file needed for this procedure.
+   6. Open the [OTAFIX bootloader releases page](https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX/releases) directly: <https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX/releases>
+      1. OTAFIX permits future firmware updates over Bluetooth without reopening the finished enclosure and reconnecting it to a computer.
+   7. Scroll down to `Assets` and click the `"Show all assets"` link.
       1. If you do not see that link, you have likely scrolled down too far.
        ![MeshCoreFlasher](images/UF2ShowAllAssets.png)
-   7. Scroll down until you see a file named `update-xiao_nrf52840_ble_sense_bootloader-0.9.2-OTAFIX2.3-BP1.4_nosd.uf2`
+   8. Scroll down until you see a file named `update-xiao_nrf52840_ble_sense_bootloader-0.9.2-OTAFIX2.3-BP1.4_nosd.uf2`
       1. **Make sure to get the one with `sense` in the middle of the name**
       2. Show where to find the correct file (the INFO_UF2.TXT file)
        ![MeshCoreFlasher](images/uf2File.png)
-   8. Double press the `RST` button on the XIAO to put it into UF2 mode.
+   9. Double press the `RST` button on the XIAO to put it into UF2 mode.
       1. Within 0.5 seconds
       2. A drive named XIAO-SENSE or XIAO-BOOT should appear.
        ![MeshCoreFlasher](images/XIAO_RST.jpg)
-   9. Go to your Downloads and copy the downloaded bootloader uf2 file.
+   10. Go to your Downloads and copy the downloaded bootloader UF2 file.
        ![MeshCoreFlasher](images/bootloader.png)
-   10. Click on the drive and paste the bootloader u2f file.
+   11. Click on the drive and paste the bootloader UF2 file.
        ![MeshCoreFlasher](images/XIAO_Sense.png)
        1. The drive will disappear and your device will reboot with the updated bootloader.
-   11. Go back to the MeshCore Flasher site [https://flahsher.meshcore.io](https://flasher.meshcore.io)
-   12. Click the `DFU mode active` button
+   12. Go back to the [MeshCore Flasher](https://flasher.meshcore.io/): <https://flasher.meshcore.io/>
+   13. Click the `DFU mode active` button
        ![MeshCoreFlasher](images/DFUmodeActive.png)
-   13. Select proper USB connection and click `Connect`.
+   14. Select the proper USB connection and click `Connect`.
        1. It will look something like this:
        ![MeshCoreFlasher](images/USBDevice.png)
        2. If it does not work for you, you may need to refresh your browser page.
-   14. Click the `Flash!` button
+   15. Click the `Flash!` button
        ![MeshCoreFlasher](images/Flash.png)
-   15. Select proper USB connection and click `Connect`.
+   16. Select the proper USB connection and click `Connect`.
        1. It will look something like this:
        ![MeshCoreFlasher](images/USBDevice.png)
-   16. Wait for the flashing process to complete.
+   17. Wait for the flashing process to complete.
        ![MeshCoreFlasher](images/Flashing.png)
-   17. Once you see this, you are ready to go onto the Configuration.
+   18. Once you see this, you are ready to go onto the Configuration.
        ![MeshCoreFlasher](images/FlashingCompleted.png)
 
-### Configuring the Repeater
+### Demonstrate Configuring the Repeater
 
 1. Click the `Configure via USB` button
    ![ConfigureRepeater](images/ConfigureUSB.png)
@@ -334,9 +346,8 @@ Explain the hierarchy as `us-in` for Indiana, `nei` for northeast Indiana, and `
    ![ConfigureRepeater](images/USBDevice.png)
 4. You should now see a window like this
    ![ConfigureRepeater](images/SetupScreen.png)
-5. We are going to follow the [OKI Mesh repeater configuration guide](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration) for the repeater name and settings.
-6. Rename your repeater:
-   1. Format IN.ALL.descriptiveName
+5. We are going to follow the [OKI Mesh repeater configuration guide](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration) for the repeater name and settings: <https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration>
+6. Show the temporary class naming pattern, such as `IN.ALL.FWA.Class01`. Explain that the owner may choose a permanent standard-form name later.
 7. Enter a good Admin password
    1. Make sure to keep a note of what you make this.
 8. Configure Radio Settings
@@ -350,12 +361,11 @@ Explain the hierarchy as `us-in` for Indiana, `nei` for northeast Indiana, and `
    4. Click the `Save settings` button
     ![ConfigureRepeater](images/SaveSettings.png)
    5. Click the `OK` button to Reboot the device to apply the updated settings.
-9. Disconnect the board from the computer.
-10. Disconnect the supplied antenna once and set it aside.
+9. Disconnect the demonstration board from the computer.
 
-**Configuration checkpoint:** Confirm the firmware, radio settings, repeater CLI settings, region hierarchy, standard-form name, normal startup, power-down, and removal of the supplied antenna.
+**Preparation checkpoint:** Show participants where the removable board or kit label identifies the temporary repeater name. Confirm that their supplied board was prepared before class. Do not remove the supplied antenna yet.
 
-## 0:45-1:50 Guided Build
+## 0:40-1:50 Guided Build
 
 Use the numbered steps in the Student Guide and Build Instructions. Demonstrate each operation before releasing the group to perform it. Stop the room at each checkpoint rather than allowing faster participants to enter a safety-critical step alone.
 
@@ -365,15 +375,15 @@ Use the numbered steps in the Student Guide and Build Instructions. Demonstrate 
 - Remove the battery immediately after opening the enclosure. Use fingers or a nonconductive tool, never a metal tool.
 - Keep the battery out during cutting, desoldering, soldering, and rewiring.
 - Never short, puncture, crush, overheat, or reverse an 18650.
-- Verify polarity with a meter. Connector shape and wire color alone are not proof.
+- Visually verify every connection against the hardware labels and illustrated build instructions.
 - Never transmit without an antenna connected.
-- Stop for unexpected heat, odor, smoke, uncertain polarity, or an unexpected measurement.
+- Stop for unexpected heat, odor, smoke, uncertain wiring, or abnormal behavior.
 - Ask for help before forcing a connector or printed part.
 - Do not close the enclosure until the open-unit inspection and tests pass.
 
 There is no drilling or cutting of the enclosure in this build.
 
-### 0:45-0:55 Steps 2 Through 5
+### 0:40-0:50 Steps 2 Through 5
 
 1. Identify and retain the original mount screw and separate nut.
 2. Put all removed hardware in a parts tray.
@@ -389,7 +399,7 @@ The original PCB is retained only so its switch can be placed inline with CN3065
 
 **Checkpoint 1:** The battery is out, the original hardware is retained, and the switch PCB and required wires are accessible.
 
-### 0:55-1:05 Steps 6 and 7
+### 0:50-1:00 Steps 6 and 7
 
 1. Identify the two marked copper paths while the battery and panel are disconnected.
 2. Demonstrate how the paths are opened and checked.
@@ -400,7 +410,7 @@ The original PCB is retained only so its switch can be placed inline with CN3065
 
 **Checkpoint 2:** The PCB modification has been checked and the TPU gasket is seated evenly.
 
-### 1:05-1:25 Steps 8 Through 11
+### 1:00-1:20 Steps 8 Through 11
 
 #### Rewire the Battery Holder
 
@@ -418,13 +428,13 @@ The panel terminals are not labeled. Change only **one conductor at a time**: re
 
 #### Connect the CN3065
 
-**JST polarity:** The class cables have already been corrected by swapping the red and black positions where needed. Students must still verify actual positive and negative polarity before connecting them.
+**JST wiring:** The class cables have already been corrected by swapping the red and black positions where needed. Students must visually verify that each conductor goes to the labeled connection shown in the build guide.
 
 Connect the verified JST plugs for solar input, battery, and system output. Do not install the battery.
 
 **Checkpoint 3:** A presenter or helper verifies polarity, solder joints, XIAO battery connections, the switch path, and all three CN3065 connections.
 
-### 1:25-1:42 Steps 12 Through 15
+### 1:20-1:40 Steps 12 Through 15
 
 1. Feed the pigtail through the PETG mount.
 2. Push the N connector upward through the antenna opening from the bottom.
@@ -437,14 +447,14 @@ Connect the verified JST plugs for solar input, battery, and system output. Do n
 9. Seat the rubber switch boot.
 10. Reinstall the switch PCB with its two original screws.
 11. Cover the PCB with painter's tape.
-12. Press the U.FL plug straight down onto the Wio socket without twisting or pulling the coax.
+12. Remove the supplied small antenna from the Wio, then immediately press the pigtail's U.FL plug straight down onto the Wio socket without twisting or pulling the coax.
 13. Support the boards and pigtail while installing the antenna connector clamp.
 
 The ALFA antenna is attached before the radio is powered. Keep the coax bend gentle.
 
 **Checkpoint 4:** The antenna is attached, the switch boot and PCB are reinstalled, the U.FL connection is seated, and the clamp supports the assembly without flexing the boards.
 
-### 1:42-1:50 Steps 16 Through 18
+### 1:40-1:50 Steps 16 Through 18
 
 #### Clean the Panel Before Testing
 
@@ -452,7 +462,7 @@ Remove the solar-panel sticker. Use Goo Gone to remove the residue, then clean t
 
 #### Inspect and Test the Open Unit
 
-Before installing the battery, inspect polarity, solder joints, PCB modifications, JST positions, switch insulation, rubber-boot seating, U.FL seating, clamp support, antenna connection, and wire routing.
+Before installing the battery, visually verify the labeled battery orientation, solder joints, PCB modifications, JST positions, switch insulation, rubber-boot seating, U.FL seating, clamp support, antenna connection, and wire routing.
 
 Install the 18650 with correct polarity and test:
 
@@ -506,21 +516,21 @@ Inspect after severe weather and periodically. Clean the panel; inspect the pole
 
 | Symptom | Check first |
 | --- | --- |
-| No power | Battery polarity and voltage, JST polarity, switch wiring, solder joints, and CN3065 path |
-| No charging | Solar illumination, panel polarity, CN3065 connections, and PCB trace modifications |
+| No power | Battery orientation, labeled JST connections, switch wiring, solder joints, and CN3065 path |
+| No charging | Solar illumination, labeled panel connection, CN3065 connections, and PCB trace modifications |
 | Poor LoRa range | Regional preset, ALFA antenna, U.FL seating, height, and obstructions |
 | Intermittent operation | Loose connection, weak battery, pinched wire, solder joint, water, or shade |
 
-Never bypass a polarity concern, battery concern, damaged enclosure, or questionable electrical connection simply to finish on time.
+Never bypass an uncertain connection, battery concern, damaged enclosure, or questionable electrical connection simply to finish on time.
 
 ## Presenter Time Checks
 
 - At **0:15**, begin placement and solar guidance.
-- At **0:30**, begin firmware and repeater configuration.
-- At **0:45**, confirm that switches are off and begin the build.
-- At **1:05**, the PCB modification and TPU gasket should be complete.
-- At **1:25**, electrical rewiring should be ready for inspection.
-- At **1:42**, begin panel cleaning, final inspection, and open-unit testing.
+- At **0:30**, begin the firmware and repeater configuration demonstration.
+- At **0:40**, confirm that switches are off and begin the build.
+- At **1:00**, the PCB modification and TPU gasket should be complete.
+- At **1:20**, electrical rewiring should be ready for inspection.
+- At **1:40**, begin panel cleaning, final inspection, and open-unit testing.
 - At **1:50**, stop construction and begin installation and maintenance guidance.
 - At **2:00**, end with a documented follow-up step for any unfinished unit.
 

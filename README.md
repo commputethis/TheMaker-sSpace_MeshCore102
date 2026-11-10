@@ -4,15 +4,23 @@
 
 This repository contains the class materials for the November 2026 Maker's Space workshop. In this two-hour class, participants convert a Harbor Breeze solar-light enclosure into **The People's Repeater**, a solar-powered MeshCore repeater for the 915 MHz band.
 
-The finished unit uses an outdoor antenna and does **not** retain the original light. The class covers repeater placement, firmware and configuration, construction, open-unit testing, weatherproofing, mounting, and maintenance. Approximately 65 minutes are reserved for the hands-on build.
+The finished unit uses an outdoor antenna and does **not** retain the original light. The class covers repeater placement, a demonstration of firmware and configuration, construction, open-unit testing, weatherproofing, mounting, and maintenance. Each class board is flashed, configured, tested, and labeled before class so approximately 70 minutes can be reserved for the hands-on build.
+
+## Project Repository and Build Sources
+
+- Class repository: <https://github.com/commputethis/TheMaker-sSpace_MeshCore102>
+- Build reference video 1: <https://www.youtube.com/watch?v=yAmINEghCOc>
+- Build reference video 2: <https://www.youtube.com/watch?v=eXMlvGiI7Hs>
+
+The documented build combines ideas from both videos with the class-specific parts, printed components, wiring, firmware preparation, and assembly process.
 
 ## Class Materials
 
 | Resource | Purpose |
 | --- | --- |
 | [Presenter Guide](MeshCore102_PresenterGuide.md) | Instructor preparation, class flow, demonstrations, checkpoints, and troubleshooting guidance |
-| [Student Guide](MeshCore102_StudentGuide.md) | Illustrated firmware, configuration, construction, testing, installation, and maintenance instructions |
-| [Presentation](MeshCore102_The_Peoples_Repeater_Slides_v4.pptx) | Editable classroom slide deck |
+| [Student Guide](MeshCore102_StudentGuide.md) | Illustrated firmware reference, construction, testing, installation, and maintenance instructions |
+| [Presentation](MeshCore102_The_Peoples_Repeater_Slides.pptx) | Editable classroom slide deck |
 | [Presenter Guide PDF](pdf/MeshCore102_PresenterGuide.pdf) | Printable presenter reference |
 | [Student Guide PDF](pdf/MeshCore102_StudentGuide.pdf) | Printable student handout |
 | [Print stylesheet](guide-print.css) | Page and image formatting for converting the Markdown guides to PDF |
@@ -36,7 +44,9 @@ The included 1500 mAh battery is used for the class. A larger compatible 18650 m
 
 ## Important Build Notes
 
-- Leave the small antenna supplied with the Wio attached during firmware and computer configuration. Disconnect it after configuration; it is not used in the finished repeater.
+- Prepare every board before class by updating the bootloader, flashing repeater firmware, applying the class settings, testing startup, and adding a removable label.
+- Temporary class names may follow the pattern `IN.ALL.FWA.Class01`, `IN.ALL.FWA.Class02`, and so on. Keep administrator passwords in a secure preparation record rather than on outward-facing labels.
+- Leave the small antenna supplied with the Wio attached while the prepared board is handled. Remove it only when the external pigtail is ready to connect during the build.
 - Confirm that the solar-light switch is **OFF** before cutting the wire to the light.
 - Remove the 18650 immediately after opening the enclosure. Use fingers or a nonconductive tool, never a metal tool.
 - Keep the battery out during cutting, desoldering, soldering, and rewiring.
@@ -57,6 +67,7 @@ The exact component mount may vary. Confirm that the selected mount fits the enc
 ## Firmware and Configuration References
 
 - [MeshCore Flasher](https://flasher.meshcore.io/)
+- [OTAFIX bootloader releases](https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX/releases)
 - [OKI Mesh repeater configuration](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration)
 - [Repeater naming standard](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming)
 - [County abbreviations](https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations)
@@ -72,13 +83,42 @@ Radio, command-line, and region recommendations can change as the local mesh gro
 
 For Indiana, a generally southerly exposure at approximately 40 degrees is a useful starting point. Adjust for site-specific shade, seasonal conditions, safe access, drainage, and the intended coverage area.
 
+## References
+
+The following list collects the web resources used in the guides and presentation. The links also remain next to the relevant instructions.
+
+### Project and Build Sources
+
+- Class repository: <https://github.com/commputethis/TheMaker-sSpace_MeshCore102>
+- Build reference video 1: <https://www.youtube.com/watch?v=yAmINEghCOc>
+- Build reference video 2: <https://www.youtube.com/watch?v=eXMlvGiI7Hs>
+
+### MeshCore Firmware and Configuration
+
+- MeshCore FAQ: <https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md>
+- MeshCore Flasher: <https://flasher.meshcore.io/>
+- OTAFIX bootloader releases: <https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX/releases>
+- OKI Mesh repeater configuration: <https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration>
+- Repeater naming standard: <https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming>
+- County abbreviations: <https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations>
+
+### Placement and Solar Planning
+
+- MeshMapper: <https://fwa.meshmapper.net/>
+- Solar tilt-angle calculator: <https://www.baess.app/tools/solar-tilt-angle-calculator>
+
+### Printed Parts
+
+- Harbor Breeze solar mesh-node mounts and TPU gasket: <https://www.printables.com/model/1748950-26-harbor-breeze-solar-mesh-node-mounts-meshtastic>
+- XIAO nRF52840 and Wio-SX1262 antenna connector clamp: <https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp>
+
 ## Repository Layout
 
 ```text
 .
 ├── MeshCore102_PresenterGuide.md
 ├── MeshCore102_StudentGuide.md
-├── MeshCore102_The_Peoples_Repeater_Slides_v4.pptx
+├── MeshCore102_The_Peoples_Repeater_Slides_v7.pptx
 ├── guide-print.css
 ├── images/
 │   ├── Build/

@@ -18,6 +18,14 @@ Build a solar-powered MeshCore repeater from a Harbor Breeze solar-light enclosu
 
 <div class="page-break" style="page-break-after: always; break-after: page;"></div>
 
+## Project Repository and Build Sources
+
+- [Class repository](https://github.com/commputethis/TheMaker-sSpace_MeshCore102) — <https://github.com/commputethis/TheMaker-sSpace_MeshCore102>
+- [Build reference video 1](https://www.youtube.com/watch?v=yAmINEghCOc) — <https://www.youtube.com/watch?v=yAmINEghCOc>
+- [Build reference video 2](https://www.youtube.com/watch?v=eXMlvGiI7Hs) — <https://www.youtube.com/watch?v=eXMlvGiI7Hs>
+
+This class build combines ideas from both reference videos with the specific parts, printed components, wiring, and procedures documented in this guide.
+
 ## What You Will Build
 
 The People's Repeater is a compact, solar-powered MeshCore relay for the 915 MHz band. The original light is removed; the finished repeater has an outdoor antenna and **does not have a light**.
@@ -30,7 +38,7 @@ The People's Repeater is a compact, solar-powered MeshCore relay for the 915 MHz
 - A **repeater** extends useful coverage by forwarding packets toward their destinations.
 - A **Room Server** is a shared message board. It stores posts and can deliver unseen history when a user returns, unlike an ordinary channel where a message can be missed while the user is out of range.
 
-A Room Server and repeater solve different problems. MeshCore recommends separate devices for the best experience; enabling repeat behavior on a Room Server does not provide the full repeater feature set. This class builds a dedicated repeater. See the [MeshCore FAQ](https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md).
+A Room Server and repeater solve different problems. MeshCore recommends separate devices for the best experience; enabling repeat behavior on a Room Server does not provide the full repeater feature set. This class builds a dedicated repeater. See the [MeshCore FAQ](https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md): <https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md>
 
 <div class="page-break" style="page-break-after: always; break-after: page;"></div>
 
@@ -51,18 +59,18 @@ A Room Server and repeater solve different problems. MeshCore recommends separat
 - 6 in / 15 cm **U.FL1-to-N-female** RG178 pigtail
 - Waterproof self-fusing silicone tape
 
-> The small antenna supplied attached to the Wio is used only during pre-build setup, then disconnected once and set aside. It is not used in the finished repeater.
+> The small antenna supplied attached to the Wio stays connected to protect the radio connector while the prepared board is handled. Remove it once during Step 14, immediately before connecting the external pigtail. It is not used in the finished repeater.
 
 <figure class="keep-together"><img src="images/parts-hardware.jpg" alt="Enclosure, gasket, mounts, antenna, and hardware"><figcaption>Antenna and enclosure hardware, including the PETG component mount and connector clamp.</figcaption></figure>
 
 ### Enclosure and mounting
 
 - 3D-printed **TPU gasket** and **PETG component mount**
-- 3D-printed PETG [**antenna connector clamp**](https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp)
+- 3D-printed PETG [**antenna connector clamp**](https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp) — <https://www.printables.com/model/1761740-xiao-nrf52840-wio-sx1262-antenna-clamp>
 - Zip ties **or** hose clamps for attaching the mount to a pole
 - Original enclosure screws and original mount screw and nut
 
-The [Harbor Breeze solar mesh-node models](https://www.printables.com/model/1748950-26-harbor-breeze-solar-mesh-node-mounts-meshtastic) page contains the component mount shown here, alternate mounts, and the TPU gasket.
+The [Harbor Breeze solar mesh-node models](https://www.printables.com/model/1748950-26-harbor-breeze-solar-mesh-node-mounts-meshtastic) page contains the component mount shown here, alternate mounts, and the TPU gasket: <https://www.printables.com/model/1748950-26-harbor-breeze-solar-mesh-node-mounts-meshtastic>
 
 > Put all removed screws and the separate mount nut in a parts tray. They are reused; they are not extra hardware.
 
@@ -75,9 +83,9 @@ The class uses the included 1500 mAh 18650. A larger-capacity compatible 18650 m
 - Remove the battery immediately after opening the enclosure. Use fingers or a nonconductive tool—never a metal tool.
 - Keep the battery out during cutting, desoldering, soldering, and rewiring.
 - Never short, puncture, crush, overheat, or reverse an 18650.
-- Verify polarity with a meter; connector shape and wire color alone are not proof.
+- Visually verify every connection against the hardware labels and illustrated build instructions.
 - Never transmit without an antenna connected.
-- Stop for unexpected heat, odor, smoke, uncertain polarity, or an unexpected measurement.
+- Stop for unexpected heat, odor, smoke, uncertain wiring, or abnormal behavior.
 
 ## Placement Before the Build
 
@@ -89,21 +97,23 @@ The class uses the included 1500 mAh 18650. A larger-capacity compatible 18650 m
 
 Planning tools:
 
-- [MeshMapper](https://fwa.meshmapper.net/) for purpose and radio-path planning
-- [Solar tilt-angle calculator](https://www.baess.app/tools/solar-tilt-angle-calculator) for panel-angle planning
+- [MeshMapper](https://fwa.meshmapper.net/) for purpose and radio-path planning — <https://fwa.meshmapper.net/>
+- [Solar tilt-angle calculator](https://www.baess.app/tools/solar-tilt-angle-calculator) for panel-angle planning — <https://www.baess.app/tools/solar-tilt-angle-calculator>
 
 <div class="page-break" style="page-break-after: always; break-after: page;"></div>
 
 # Build Guide
 
-## 1. Flash and Configure Before Disassembly
+## 1. Confirm the Prepared Board and Review Firmware Setup
 
-Complete the bootloader update, firmware flash, and repeater configuration before cutting any wires or opening the solar-light enclosure. Leave the small antenna supplied with the Wio attached throughout computer setup. It will be disconnected once after configuration and will not be used in the finished repeater.
+> **Class boards are flashed, configured, tested, and labeled before class. Do not reflash or reconfigure your class board during the build. The instructor will demonstrate Sections 1A through 1E. These instructions remain here for future reference.**
 
-### 1A. Select the Board and Repeater Firmware
+Match the removable label on your board or kit to the temporary repeater name supplied by the instructor, such as `IN.ALL.FWA.Class01`. Leave the small antenna attached while handling the prepared board. It will be removed once during Step 14 and replaced immediately with the external pigtail.
+
+### 1A. Select the Board and Repeater Firmware (Reference)
 
 1. Connect the XIAO and Wio assembly to the computer with a USB cable.
-2. Open the MeshCore Flasher [https://flasher.meshcore.io](https://flasher.meshcore.io/).
+2. Open the MeshCore Flasher [https://flasher.meshcore.io/](https://flasher.meshcore.io/).
 3. Type `xiao` in the search box.
 
 <figure class="keep-together"><img src="images/MeshCoreFlasher1.png" alt="MeshCore Flasher search box with xiao entered"><figcaption>Filter the device list by entering xiao.</figcaption></figure>
@@ -116,15 +126,15 @@ Complete the bootloader update, firmware flash, and repeater configuration befor
 
 <figure class="keep-together"><img src="images/MeshCoreFlasher3.png" alt="Repeater role selected in MeshCore Flasher"><figcaption>Select Repeater as the firmware role.</figcaption></figure>
 
-### 1B. Update the OTAFIX Bootloader
+### 1B. Update the OTAFIX Bootloader (Reference)
 
 The OTAFIX bootloader permits future firmware updates over Bluetooth without reopening the finished enclosure and reconnecting the board to a computer. Install it before flashing the repeater firmware.
 
-1. On the flasher page, select the **OTAFIX bootloader** link to open the GitHub release page.
+1. Open the [OTAFIX bootloader releases page](https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX/releases) directly: <https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX/releases>
 
-<figure class="keep-together"><img src="images/MeshCoreFlasher4.png" alt="OTAFIX bootloader link in MeshCore Flasher"><figcaption>Open the OTAFIX bootloader release from the flasher page.</figcaption></figure>
+   Do not select the OTAFIX link on the MeshCore Flasher page for this procedure. That link downloads a ZIP file rather than the UF2 file needed below. The flasher's **Read more** link reaches instructions that point to the same GitHub releases page, but the direct link is faster.
 
-2. Scroll to **Assets** and select **Show all 53 assets**. The displayed number of assets may change between releases.
+2. Open the appropriate release, scroll to **Assets**, and select **Show all assets**. The displayed number of assets may change between releases.
 
 <figure class="keep-together"><img src="images/UF2ShowAllAssets.png" alt="Show all 53 assets link on the bootloader release page"><figcaption>Expand the complete release-asset list.</figcaption></figure>
 
@@ -150,9 +160,9 @@ The OTAFIX bootloader permits future firmware updates over Bluetooth without reo
 
 The drive will disappear when the copy completes, and the XIAO will reboot with the updated bootloader.
 
-### 1C. Flash the Repeater Firmware
+### 1C. Flash the Repeater Firmware (Reference)
 
-1. Return to the [MeshCore Flasher](https://flasher.meshcore.io/) with the XIAO WIO target and Repeater role selected.
+1. Return to the [MeshCore Flasher](https://flasher.meshcore.io/) with the XIAO WIO target and Repeater role selected: <https://flasher.meshcore.io/>
 2. Select **DFU mode active**.
 
 <figure class="keep-together"><img src="images/DFUmodeActive.png" alt="DFU mode active button in MeshCore Flasher"><figcaption>Tell the flasher that the board is in DFU mode.</figcaption></figure>
@@ -172,7 +182,7 @@ The drive will disappear when the copy completes, and the XIAO will reboot with 
 
 <figure class="keep-together"><img src="images/FlashingCompleted.png" alt="MeshCore firmware flashing completed"><figcaption>Continue only after the flasher reports completion.</figcaption></figure>
 
-### 1D. Configure the Repeater
+### 1D. Configure the Repeater (Reference)
 
 1. Select **Configure via USB**.
 
@@ -190,13 +200,13 @@ The drive will disappear when the copy completes, and the XIAO will reboot with 
 
 <figure class="keep-together"><img src="images/SetupScreen.png" alt="MeshCore repeater setup screen"><figcaption>Use the setup screen to enter the repeater settings.</figcaption></figure>
 
-5. Follow the [OKI Mesh repeater configuration guide](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration).
+5. Follow the [OKI Mesh repeater configuration guide](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration): <https://docs.okimesh.org/books/meshcore-I9o/page/repeater-configuration>
 6. Enter the repeater name using the standard format `StateCode.CountyCode.descriptiveName`.
 
    - Allen County: `IN.ALL.descriptiveName`
    - Local Fort Wayne convention: `IN.ALL.FWA.descriptiveName`
-   - [Repeater naming reference](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming)
-   - [County abbreviations](https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations)
+   - [Repeater naming reference](https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming) — <https://docs.okimesh.org/books/meshcore-I9o/page/repeater-naming>
+   - [County abbreviations](https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations) — <https://docs.okimesh.org/books/meshcore-I9o/page/county-abbreviations>
 
 7. Create a strong administrator password and record it in a secure place.
 8. Set the radio preset to `USA`. Confirm that the resulting values match the NEIMesh settings in the next section. If the interface changes the displayed preset to `Canada`, set it back to `USA` and verify the individual values.
@@ -212,7 +222,7 @@ The drive will disappear when the copy completes, and the XIAO will reboot with 
 
 <figure class="keep-together"><img src="images/SaveSettings.png" alt="Save settings button in the repeater setup"><figcaption>Save the configuration and allow the device to reboot.</figcaption></figure>
 
-### 1E. Apply the NEIMesh Settings
+### 1E. Apply the NEIMesh Settings (Reference)
 
 MeshCore devices must use matching radio settings to communicate. NEIMesh currently recommends the following local baseline. These recommendations may change as the mesh grows.
 
@@ -248,12 +258,11 @@ region allowf *
 
 The hierarchy is `us-in` for Indiana, `nei` for northeast Indiana, and `fwa` for the Fort Wayne area.
 
-### 1F. Finish Computer Setup
+### 1F. Confirm Your Prepared Board
 
-1. Confirm the repeater name, radio values, path-hash mode, owner information, command-line settings, and region hierarchy.
-2. Confirm normal startup after the configuration reboot.
-3. Disconnect the board from the computer.
-4. Disconnect the small supplied Wio antenna once and set it aside. It is not used in the finished repeater.
+1. Confirm that the removable board or kit label shows the temporary repeater name assigned during instructor preparation.
+2. Record the supplied name and preparation information in the Build Record at the end of this guide.
+3. Leave the supplied small Wio antenna attached until Step 14.
 
 ## 2. Retain the Mount Hardware
 
@@ -316,7 +325,7 @@ The panel terminals are unlabeled. Change only **one conductor at a time**: remo
 
 ## 11. Connect the CN3065
 
-> **JST polarity:** The class cables have already been corrected by swapping the red and black positions where needed. Still verify actual positive and negative polarity before connecting them.
+> **JST wiring:** The class cables have already been corrected by swapping the red and black positions where needed. Visually verify that each conductor goes to the labeled connection shown in this guide.
 
 Connect the three verified JST plugs for solar input, battery, and system output. Do not install the battery yet.
 
@@ -338,7 +347,7 @@ Attach the mount with the retained screw and nut. Keep the coax bend gentle. Att
 
 ## 14. Reinstall the Switch and Connect the Radio
 
-Before reinstalling the switch/PCB, make sure the rubber switch boot is seated correctly to keep moisture out. Reinstall the switch/PCB with its two original screws, then cover it with painter's tape. Press the U.FL plug straight down onto the Wio socket; do not twist or pull on the coax.
+Before reinstalling the switch/PCB, make sure the rubber switch boot is seated correctly to keep moisture out. Reinstall the switch/PCB with its two original screws, then cover it with painter's tape. Remove the small supplied antenna from the Wio and set it aside. Immediately press the pigtail's U.FL plug straight down onto the Wio socket; do not twist or pull on the coax.
 
 <figure class="keep-together"><img src="images/build-14.jpg" alt="Switch insulation and Wio connection"><figcaption>Seat the rubber boot, reinstall the screws, apply tape, and connect the pigtail.</figcaption></figure>
 
@@ -350,7 +359,7 @@ Support the boards and pigtail while installing the clamp. Do not flex the board
 
 ## 16. Clean the Panel, Inspect, Install the Battery, and Test
 
-Remove the solar-panel sticker. Use Goo Gone to remove adhesive residue, then clean the panel with isopropyl alcohol. Arrange components and inspect polarity, solder joints, trace cuts, JST positions, switch insulation, and pigtail seating. Install the 18650 with correct polarity and test startup, the saved settings and name, LoRa relay through the ALFA antenna, and charging response. Disconnect immediately for heat, odor, smoke, or abnormal behavior.
+Remove the solar-panel sticker. Use Goo Gone to remove adhesive residue, then clean the panel with isopropyl alcohol. Arrange components and visually verify the labeled battery orientation, solder joints, trace cuts, JST positions, switch insulation, and pigtail seating. Install the 18650 in the labeled orientation and test startup, the saved settings and name, LoRa relay through the ALFA antenna, and charging response. Disconnect immediately for heat, odor, smoke, or abnormal behavior.
 
 <figure class="keep-together"><img src="images/step-16-sticker.jpg" alt="Removing the solar-panel sticker"><figcaption>Remove the sticker and clean the panel before testing.</figcaption></figure>
 
@@ -370,14 +379,14 @@ Use zip ties or hose clamps to attach the PETG mount to a pole. They are for pol
 
 ## Final Acceptance Checklist
 
-- [ ] OTAFIX bootloader installed and repeater firmware flashed successfully
-- [ ] `USA` radio values and 2-byte path-hash mode saved
-- [ ] Standard-form repeater name, owner information, and administrator password completed
-- [ ] Repeater command-line and `us-in` / `nei` / `fwa` region settings entered
-- [ ] Both PCB trace cuts test open
-- [ ] Corrected JST polarity and solder joints verified
+- [ ] Preclass firmware, configuration, startup test, and temporary-name label confirmed
+- [ ] `USA` radio values and 2-byte path-hash mode recorded
+- [ ] Temporary standard-form repeater name and owner information recorded
+- [ ] Repeater command-line and `us-in` / `nei` / `fwa` region settings confirmed
+- [ ] Both PCB traces modified under instructor guidance
+- [ ] Corrected JST wiring and solder joints visually verified
 - [ ] ALFA antenna and U.FL pigtail secure
-- [ ] Battery installed with correct polarity only after inspection
+- [ ] Battery installed in the labeled orientation only after inspection
 - [ ] LoRa relay and charging tests pass
 - [ ] TPU gasket and all original hardware installed
 - [ ] Antenna joint sealed with self-fusing silicone tape
@@ -389,8 +398,8 @@ Use zip ties or hose clamps to attach the PETG mount to a pole. They are for pol
 | XIAO drive does not appear | Double-press `RST` within approximately 0.5 seconds; try another USB data cable or port |
 | Flasher cannot connect | Confirm the correct USB device, refresh the browser, reconnect the cable, and retry |
 | Settings do not persist | Select **Save settings**, approve the reboot, reconnect, and verify each value |
-| No power | Battery polarity/voltage, JST polarity, switch wiring, solder joints, and CN3065 path |
-| No charging | Solar illumination, panel polarity, CN3065 connections, and trace cuts |
+| No power | Battery orientation, labeled JST connections, switch wiring, solder joints, and CN3065 path |
+| No charging | Solar illumination, labeled panel connection, CN3065 connections, and trace cuts |
 | Poor LoRa range | Regional preset, ALFA antenna, U.FL seating, height, and obstructions |
 | Intermittent operation | Loose connection, weak battery, pinched wire, solder joint, water, or shade |
 
@@ -406,8 +415,9 @@ Inspect after severe weather and periodically. Clean the panel; inspect the moun
 | Build date |  |
 | Repeater name |  |
 | Firmware/version |  |
-| OTAFIX bootloader | Installed / Needs follow-up |
-| Radio and region settings | Verified / Needs follow-up |
+| Preclass board label | Matches / Needs follow-up |
+| OTAFIX bootloader and firmware | Prepared / Needs follow-up |
+| Radio and region settings | Prepared / Needs follow-up |
 | Owner/contact identifier |  |
 | Installation location |  |
 | Battery installed | Included 1500 mAh 18650 / Other: __________ |
