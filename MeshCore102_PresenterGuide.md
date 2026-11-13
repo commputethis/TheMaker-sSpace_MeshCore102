@@ -497,13 +497,45 @@ If a unit is not ready to close at 1:50, bag and label its parts and record the 
 - Set the panel for seasonal sun.
 - Confirm permission, stability, safe access, and a water-shedding orientation.
 
+### Explain the Post-Installation App Setup
+
+Participants complete this procedure after installing the repeater in its final location.
+
+1. Open the repeater from **Contacts** and log in.
+2. Select **Command Line** at the bottom of the app.
+3. Enter the installed coordinates:
+
+   ```text
+   set lat <value>
+   set lon <value>
+   ```
+
+   Example:
+
+   ```text
+   set lat 41.106
+   set lon -85.06
+   ```
+
+4. Enter `clock sync`.
+5. If the regional commands have not already been applied, enter them during the same command-line session.
+6. Return to **Contacts**, open the repeater's three-dot menu, and select **Share**.
+7. Select **Zero Hop Advert**.
+8. Open **Share** again and select **Upload to Internet Map**.
+
+Explain that the clock affects log timestamps only, but accurate timestamps help with troubleshooting. The clock must be synchronized again after every reboot.
+
+<figure class="keep-together"><img style="max-height: 4.9in;" src="images/post-install-share-menu.png" alt="MeshCore contact menu with Share selected"><figcaption>Open the repeater's contact menu and select Share.</figcaption></figure>
+
+<figure class="keep-together"><img style="max-height: 4.9in;" src="images/post-install-internet-map.png" alt="MeshCore Share Contact screen with Upload to Internet Map and Zero Hop Advert"><figcaption>Send a Zero Hop Advert, then upload the repeater to the Internet Map.</figcaption></figure>
+
 ### Review Maintenance
 
-Inspect after severe weather and periodically. Clean the panel; inspect the pole fasteners, PETG mount, enclosure, TPU gasket, silicone tape, and antenna connection; look for corrosion or moisture; review battery performance before winter; and retest after moving the unit or changing its antenna system.
+Inspect after severe weather and periodically. Clean the panel; inspect the pole fasteners, PETG mount, enclosure, TPU gasket, silicone tape, and antenna connection; look for corrosion or moisture; review battery performance before winter; and retest after moving the unit or changing its antenna system. After a reboot, run `clock sync`. After moving the repeater, update its coordinates, send another Zero Hop Advert, and upload it to the Internet Map again.
 
 ### Closing Message
 
-"The repeater's value depends on where it is installed and whether it remains powered, dry, and serviceable. Test the proposed location, obtain permission, document the repeater name and location, and inspect it periodically."
+"The repeater's value depends on where it is installed and whether it remains powered, dry, and serviceable. After installation, save its coordinates, synchronize its clock, advertise it, and publish it to the Internet Map. Document the repeater name and location, then inspect it periodically."
 
 ## Troubleshooting Strategy
 
@@ -531,7 +563,7 @@ Never bypass an uncertain connection, battery concern, damaged enclosure, or que
 - At **1:00**, the PCB modification and TPU gasket should be complete.
 - At **1:20**, electrical rewiring should be ready for inspection.
 - At **1:40**, begin panel cleaning, final inspection, and open-unit testing.
-- At **1:50**, stop construction and begin installation and maintenance guidance.
+- At **1:50**, stop construction and begin installation, post-installation app setup, and maintenance guidance.
 - At **2:00**, end with a documented follow-up step for any unfinished unit.
 
 ---

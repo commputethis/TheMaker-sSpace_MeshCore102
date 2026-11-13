@@ -4,7 +4,7 @@
 
 This repository contains the class materials for the November 2026 Maker's Space workshop. In this two-hour class, participants convert a Harbor Breeze solar-light enclosure into **The People's Repeater**, a solar-powered MeshCore repeater for the 915 MHz band.
 
-The finished unit uses an outdoor antenna and does **not** retain the original light. The class covers repeater placement, a demonstration of firmware and configuration, construction, open-unit testing, weatherproofing, mounting, and maintenance. Each class board is flashed, configured, tested, and labeled before class so approximately 70 minutes can be reserved for the hands-on build.
+The finished unit uses an outdoor antenna and does **not** retain the original light. The class covers repeater placement, a demonstration of firmware and configuration, construction, open-unit testing, weatherproofing, mounting, post-installation location and map setup, and maintenance. Each class board is flashed, configured, tested, and labeled before class so approximately 70 minutes can be reserved for the hands-on build.
 
 ## Class Recording
 
@@ -26,7 +26,7 @@ The documented build combines ideas from both videos with the class-specific par
 | --- | --- |
 | [Presenter Guide](MeshCore102_PresenterGuide.md) | Instructor preparation, class flow, demonstrations, checkpoints, and troubleshooting guidance |
 | [Student Guide](MeshCore102_StudentGuide.md) | Illustrated firmware reference, construction, testing, installation, and maintenance instructions |
-| [Presentation](MeshCore102_The_Peoples_Repeater_Slides.pptx) | Editable classroom slide deck |
+| [Presentation](MeshCore102_The_Peoples_Repeater_Slides_v8.pptx) | Editable classroom slide deck |
 | [Presenter Guide PDF](pdf/MeshCore102_PresenterGuide.pdf) | Printable presenter reference |
 | [Student Guide PDF](pdf/MeshCore102_StudentGuide.pdf) | Printable student handout |
 | [Print stylesheet](guide-print.css) | Page and image formatting for converting the Markdown guides to PDF |
@@ -89,6 +89,23 @@ Radio, command-line, and region recommendations can change as the local mesh gro
 
 For Indiana, a generally southerly exposure at approximately 40 degrees is a useful starting point. Adjust for site-specific shade, seasonal conditions, safe access, drainage, and the intended coverage area.
 
+## Post-Installation Setup
+
+After installing the repeater in its final location:
+
+1. Log in to the repeater from **Contacts** and open **Command Line**.
+2. Set its installed coordinates:
+
+   ```text
+   set lat <value>
+   set lon <value>
+   ```
+
+3. Run `clock sync`. Repeat this command after every reboot. The clock affects log timestamps only, but correct timestamps help with troubleshooting.
+4. From the repeater's contact menu, select **Share**, send a **Zero Hop Advert**, then select **Upload to Internet Map**.
+
+If the repeater moves, update its coordinates, send another advert, and upload it to the Internet Map again.
+
 ## References
 
 The following list collects the web resources used in the guides and presentation. The links also remain next to the relevant instructions.
@@ -142,12 +159,12 @@ covered by this license.
 ├── LICENSE
 ├── MeshCore102_PresenterGuide.md
 ├── MeshCore102_StudentGuide.md
-├── MeshCore102_The_Peoples_Repeater_Slides_v7.pptx
+├── MeshCore102_The_Peoples_Repeater_Slides_v8.pptx
 ├── guide-print.css
 ├── images/
 │   ├── Build/
 │   ├── Parts/
-│   └── firmware, parts, and build images
+│   └── firmware, app, parts, and build images
 └── pdf/
     ├── MeshCore102_PresenterGuide.pdf
     └── MeshCore102_StudentGuide.pdf

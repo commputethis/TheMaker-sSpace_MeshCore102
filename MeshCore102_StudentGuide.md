@@ -377,6 +377,46 @@ Use zip ties or hose clamps to attach the PETG mount to a pole. They are for pol
 
 <div class="page-break" style="page-break-after: always; break-after: page;"></div>
 
+## 19. Complete the Post-Installation Setup
+
+Complete these steps after the repeater is installed in its final location.
+
+### Set the coordinates and sync the clock
+
+1. Open the MeshCore app and find the repeater in **Contacts**.
+2. Log in to the repeater.
+3. Select **Command Line** at the bottom of the app.
+4. Enter the installed latitude and longitude, replacing each placeholder with the correct decimal value:
+
+```text
+set lat <value>
+set lon <value>
+```
+
+Example:
+
+```text
+set lat 41.106
+set lon -85.06
+```
+
+5. Enter `clock sync`.
+
+The clock affects log timestamps only, but accurate timestamps help when troubleshooting. Run `clock sync` any time the repeater reboots. You may also apply the regional commands from Section 1E during this command-line session if they have not already been set.
+
+### Send an advert and publish the repeater
+
+1. Return to **Contacts**.
+2. Open the three-dot menu for the repeater and select **Share**.
+3. Select **Zero Hop Advert**.
+4. Open **Share** again and select **Upload to Internet Map**.
+
+<figure class="keep-together"><img style="max-height: 4.9in;" src="images/post-install-share-menu.png" alt="MeshCore contact menu with Share selected"><figcaption>Open the repeater's contact menu and select Share.</figcaption></figure>
+
+<figure class="keep-together"><img style="max-height: 4.9in;" src="images/post-install-internet-map.png" alt="MeshCore Share Contact screen with Upload to Internet Map and Zero Hop Advert"><figcaption>Send a Zero Hop Advert, then upload the repeater to the Internet Map.</figcaption></figure>
+
+<div class="page-break" style="page-break-after: always; break-after: page;"></div>
+
 ## Final Acceptance Checklist
 
 - [ ] Preclass firmware, configuration, startup test, and temporary-name label confirmed
@@ -390,6 +430,9 @@ Use zip ties or hose clamps to attach the PETG mount to a pole. They are for pol
 - [ ] LoRa relay and charging tests pass
 - [ ] TPU gasket and all original hardware installed
 - [ ] Antenna joint sealed with self-fusing silicone tape
+- [ ] Installed latitude and longitude saved
+- [ ] Clock synchronized after the latest reboot
+- [ ] Zero Hop Advert sent and repeater uploaded to the Internet Map
 
 ## Troubleshooting
 
@@ -405,7 +448,7 @@ Use zip ties or hose clamps to attach the PETG mount to a pole. They are for pol
 
 ## Maintenance
 
-Inspect after severe weather and periodically. Clean the panel; inspect the mount, fasteners, gasket, enclosure, and silicone tape; look for corrosion or moisture; review battery performance before winter; and retest after moving the unit or changing its antenna system.
+Inspect after severe weather and periodically. Clean the panel; inspect the mount, fasteners, gasket, enclosure, and silicone tape; look for corrosion or moisture; review battery performance before winter; and retest after moving the unit or changing its antenna system. After a reboot, run `clock sync`. After moving the repeater, update its coordinates, send another Zero Hop Advert, and upload it to the Internet Map again.
 
 ## Build Record
 
@@ -420,9 +463,11 @@ Inspect after severe weather and periodically. Clean the panel; inspect the moun
 | Radio and region settings | Prepared / Needs follow-up |
 | Owner/contact identifier |  |
 | Installation location |  |
+| Installed latitude / longitude |  |
 | Battery installed | Included 1500 mAh 18650 / Other: __________ |
 | Final radio test | Pass / Needs follow-up |
 | Final charging test | Pass / Needs follow-up |
+| Zero Hop Advert / Internet Map | Complete / Needs follow-up |
 | Notes |  |
 
 ---
